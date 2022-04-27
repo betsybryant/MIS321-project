@@ -29,7 +29,7 @@ function populateList()
                 html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
                 html += `<h7 class="card-title">`+ "$" + product.productPrice + `</h7>`;
                 html += `<br>`
-                html += `<button class = "addToCart"> Add To Cart`
+                html += `<button onclick = "addToCart()"> Add To Cart</button>`
                 html += `</div>`
             }
 		});
@@ -38,4 +38,23 @@ function populateList()
 	}).catch(function(error) {
 		console.log(error);
 	})
+}
+function addToCart()
+{
+    console.log("MADE IT");
+    var addToCartButton = document.getElementsByClassName("card")
+    const url = baseUrl;
+
+    fetch(baseUrl).then(function(response){
+        return response.json();
+    }).then(function(json){
+        console.log(json);
+        if(product.ProductId = "@productId")
+        {
+            // console.log("Email and password match!");
+            console.log(product.ProductName);
+        };
+    }).catch(function(error){
+        console.log(error);
+    });
 }
