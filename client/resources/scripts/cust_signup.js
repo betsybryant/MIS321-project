@@ -33,10 +33,7 @@ function createUserAccount(){
         },
         body: JSON.stringify(sendCust)
     })
-    if(sendCust != null)
-    {
-        window.location.href = "./groceries_main.html"
-    }
+    // window.location.href = "./groceries_main.html"
 }
 
 // function favoriteSongs(id)
