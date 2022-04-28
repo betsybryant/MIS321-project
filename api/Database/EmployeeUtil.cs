@@ -6,6 +6,24 @@ namespace Api.Database
 {
     public class EmployeeUtil : IReadEmployee
     {
+        public void Create(Employee employee)
+        {
+            ConnectionString myConnection = new ConnectionString();
+            string cs = myConnection.cs;
+            using var con = new MySqlConnection(cs);
+            con.Open();  
+
+            string stm = @"INSERT INTO employees(empID, empEmail, empFName, empLName, empPassword) VALUES(@empID, @empEmail, @empFName, @empLName, @empPassword)";
+
+            using var cmd = new MySqlCommand(stm, con);
+            cmd.Parameters.AddWithValue("@empID", employee.EmpId);
+            cmd.Parameters.AddWithValue("@empEmail", employee.EmpEmail);
+            cmd.Parameters.AddWithValue("@empFName", employee.EmpFName);
+            cmd.Parameters.AddWithValue("@empLName", employee.EmpLName);
+            cmd.Parameters.AddWithValue("@empPassword", employee.EmpPassword);
+            cmd.Prepare();
+            cmd.ExecuteNonQuery();
+        }
         public List<Employee> GetAll()
         {
             List<Employee> myEmployee = new List<Employee>();
