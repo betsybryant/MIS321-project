@@ -1,18 +1,16 @@
-const baseUrl = "https://localhost:5001/api/Customers";
+const baseUrl = "https://localhost:5001/api/Employees";
 
 function test(){
-    console.log(sessionStorage.getItem("custEmail"));
-    console.log(sessionStorage.getItem("custPassword"));
+    console.log(sessionStorage.getItem("empEmail"));
+    console.log(sessionStorage.getItem("empPassword"));
 }
 
 
-function custLogin(){
+function empLogin(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
     const url = baseUrl;
-
-
 
     console.log(email);
     console.log(password);
@@ -21,13 +19,13 @@ function custLogin(){
         return response.json();
     }).then(function(json){
         console.log(json);
-        json.forEach((customer) => {
-            console.log(customer.custFName)
-            if(email === customer.custEmail && password === customer.custPassword)
+        json.forEach((employee) => {
+            console.log(employee.empFName)
+            if(email === employee.empEmail && password === employee.empPassword)
             {
                 console.log("Email and password match!");
-                sessionStorage.setItem("custEmail", customer.custEmail);
-                sessionStorage.setItem("custPassword", customer.custPassword);
+                sessionStorage.setItem("empEmail", employee.empEmail);
+                sessionStorage.setItem("empPassword", employee.empPassword);
             }
 		});
     }).catch(function(error){
