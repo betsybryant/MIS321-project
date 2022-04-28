@@ -7411,19 +7411,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\spoke\\.nuget\\packages\\": {}
+    "/Users/monteria/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\spoke\\source\\repos\\MIS321-project\\api\\api.csproj",
+      "projectUniqueName": "/Users/monteria/MIS321-project/api/api.csproj",
       "projectName": "api",
-      "projectPath": "C:\\Users\\spoke\\source\\repos\\MIS321-project\\api\\api.csproj",
-      "packagesPath": "C:\\Users\\spoke\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\spoke\\source\\repos\\MIS321-project\\api\\obj\\",
+      "projectPath": "/Users/monteria/MIS321-project/api/api.csproj",
+      "packagesPath": "/Users/monteria/.nuget/packages/",
+      "outputPath": "/Users/monteria/MIS321-project/api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\spoke\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/monteria/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7482,7 +7482,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.406/RuntimeIdentifierGraph.json"
       }
     }
   }
