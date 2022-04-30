@@ -1,4 +1,4 @@
-const baseUrl = "https://localhost:5001/api/Customers";
+baseUrl = "https://localhost:5001/api/Customers";
 
 function test(){
     console.log(sessionStorage.getItem("custEmail"));
@@ -10,7 +10,6 @@ function custLogin(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
-    const url = baseUrl;
 
 
 

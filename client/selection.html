@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Please select a category</h1>
+    <div>
+        <table id = "veg">
+            <th>Vegatables</th>
+        </table>
+        <button onclick="chooseVeg();">Click Here</button><br></br>
+
+        <table id = "grain">
+            <th>Grains</th>
+        </table>
+        <button onclick="chooseGrains();">Click Here</button><br></br>
+
+        <table id = "dairy">
+            <th>Dairy</th>
+        </table>
+        <button onclick="chooseDairy();">Click Here</button><br></br>
+
+        <table id = "meat">
+            <th>Meats</th>
+        </table>
+        <button onclick="chooseMeats();">Click Here</button><br></br>
+
+        <table id = "fruit">
+            <th>Fruit</th>
+        </table>
+        <button onclick="chooseFruit();">Click Here</button><br></br>
+
+        <table id = "all">
+            <th>View All</th>
+        </table>
+        <button onclick="chooseAll();">Click Here</button><br></br>
+
+        <div class="container">
+            <div id="productPlacement" class="row"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="./resources/scripts/selection.js" type="text/JavaScript"></script>
+  </body>
+</html>

@@ -1,3 +1,4 @@
+using System.Runtime.ConstrainedExecution;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,11 +44,12 @@ namespace Api.Controller
 
         // PUT: api/Customers/5
         [EnableCors("OpenPolicy")]
-        [HttpPut("{id}")]
-        public void Put(int id)
+        [HttpPut]
+        public void Put(int id, Customer customer)
         {
             CustomerUtil customerUtil = new CustomerUtil();
-            // customerUtil.Update();
+            customerUtil.Update(customer);
+            Console.WriteLine("MADE TO CONTROLLER");
         }
 
         // DELETE: api/Customers/5

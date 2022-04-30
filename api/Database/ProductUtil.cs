@@ -53,27 +53,5 @@ namespace Api.Database
             }
             return myProduct;
         }
-
-
-        // public void Update(Product product)
-        // {
-        //     ConnectionString myConnection = new ConnectionString();
-        //     string cs = myConnection.cs;
-
-        //     using var con = new MySqlConnection(cs);
-        //     con.Open();
-            
-        //     string stm = @"UPDATE customer SET CardNo = @CardNo WHERE Id = @Id"; 
-        //     stm = @"UPDATE customer SET CvvNo = @CvvNo WHERE Id = @Id";
-        //     stm = @"UPDATE customer SET Date = @CardNo WHERE Date = @Date";
-        //     using var cmd = new MySqlCommand(stm, con);
-        //     cmd.Parameters.AddWithValue("@custId", customer.CustId);
-        //     cmd.Parameters.AddWithValue("@cvvNo", customer.CvvNo);
-        //     cmd.Parameters.AddWithValue("@cardMonth", customer.CardMonth);
-        //     cmd.Parameters.AddWithValue("@cardYear", customer.CardYear);
-
-        //     cmd.Prepare();
-        //     cmd.ExecuteNonQuery();
-        // }
     }
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="../client/resources/images/tidemarketlogo_trans.png">
     <link href="../client/resources/cust_update.css" rel="stylesheet">
+    <script src = "./resources/scripts/cust_update.js"></script>
     <title>Tide Market: Update Payment</title>
 </head>
 <body>
@@ -12,17 +13,20 @@
     <p class="lead">Update Tide Market Account Payment Info </p>
     <div class="container">
 
-      <label for="cdn"><b> Name on Card</b></label>
-      <input type="text" placeholder="Enter Card Name" name="cdn" required>
+      <label for="cdn"><b>Name on Card</b></label>
+      <input type="text" placeholder="Enter Card Name" name="cardName" required>
 
       <br><br><label for="cardno"><b>Card Number</b></label>
-      <input type="text" placeholder="Enter Card Number" name="cardno" required>
+      <input type="text" placeholder="Enter Card Number" name="cardNo" required>
 
-      <br><br><label for="cvvno"><b>CVV </b></label> 
-      <input type="text" placeholder="Enter CVV" name="cvvno" required>
+      <br><br><label for="cddate"><b>Expiration Month</b></label>
+      <input type="text" placeholder="Enter Ex Date (mm)" name="cardMonth" required> <br>
 
-      <br><br><label for="cddate"><b>Ex Date</b></label>
-      <input type="text" placeholder="Enter Ex Date" name="cddate" required> <br>
+      <br><br><label for="cddate"><b>Expiration Year</b></label>
+      <input type="text" placeholder="Enter Ex Year (yyyy)" name="cardYear" required> <br>
+
+      <br><br><label for="cvvno"><b>CVV Number</b></label> 
+      <input type="text" placeholder="Enter CVV" name="cvvNo" required>
 
       <button onclick="updatePayment();">Update Payment</button>
     </div>
