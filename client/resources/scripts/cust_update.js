@@ -1,7 +1,10 @@
 const baseUrl = "https://localhost:5001/api/Customers";
+const email = sessionStorage.getItem("empEmail");
+const password = sessionStorage.getItem("empPassword");
 function updatePayment(customer)
 {
-    const updatePaymentUrl = baseUrl + "/" + customer.custId;
+    console.log(email);
+    const updatePaymentUrl = baseUrl + "/" + customer.custID;
     console.log("MADE IT");
     fetch(updatePaymentUrl, {
         method: "PUT",
@@ -13,4 +16,5 @@ function updatePayment(customer)
         console.log(response);
     })
     console.log("MADE IT TO END OF JS");
+    console.log(email);
 }

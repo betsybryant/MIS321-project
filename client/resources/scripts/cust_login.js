@@ -21,33 +21,18 @@ function custLogin(){
     }).then(function(json){
         console.log(json);
         json.forEach((customer) => {
-            console.log(customer.custFName)
             if(email === customer.custEmail && password === customer.custPassword)
             {
-                console.log("Email and password match!");
                 sessionStorage.setItem("custEmail", customer.custEmail);
                 sessionStorage.setItem("custPassword", customer.custPassword);
+                console.log(email);
+                window.location.href = "./selection.html";
             }
 		});
     }).catch(function(error){
         console.log(error);
     });
-
-    // fetch(url).then(function(response) {
-	// 	console.log(response);
-	// 	return response.json();
-	// }).then(function(json) {
-    //     console.log(json)
-	// 	json.forEach((customer) => {
-    //         console.log(customer.custId);
-	// 	});
-
-	// }).catch(function(error) {
-	// 	console.log(error);
-	// })
-
 }
-
 
 
 
