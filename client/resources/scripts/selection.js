@@ -1,5 +1,7 @@
 const baseUrl = "https://localhost:5001/api/Products";
+const orderUrl = "https://localhost:5001/api/Orders"
 var cartTotal = 0;
+//sessionStorage.setItem("cartTotal", "0");
 
 function chooseVeg()
 {
@@ -200,10 +202,10 @@ function addToCart(id)
             if(product.productId == id)
             {
                 //addCart(product, id);
-                // sessionStorage.setItem("cartTotal", cartTotal + 10);
-                // console.log("Cart Total:" + sessionStorage.getItem("cartTotal"));
-                cartTotal += 10;
+                cartTotal += product.productPrice;
+                //sessionStorage.setItem("cartTotal", parseInt(sessionStorage.getItem("cartTotal")) + product.productPrice);
                 console.log("Cart Total = " + cartTotal);
+                //console.log("sessionStorage cartTotal = " + sessionStorage.getItem("cartTotal"));
             };
         })
     }).catch(function(error){
@@ -234,7 +236,7 @@ function addToCart(id)
 
 
 function placeOrder(){
-    const postUrl = baseUrl;
+    const postUrl = orderUrl;
     const sendOrder = {
         orderRecordDate: Date(),
         orderCompletedDate: null,
