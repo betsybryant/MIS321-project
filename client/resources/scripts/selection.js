@@ -46,6 +46,7 @@ function chooseGrains()
                 html += `<div class="card col-md-4 bg-light text-dark">`;
                 html += `<img src = "${product.productImage}" class = "card-img" alt="...">`;
                 html += `<class = "card-img-overlay">`
+                html += product.productId;
                 html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
                 html += `<h7 class="card-title">`+ "$" + product.productPrice + `</h7>`;
                 html += `<br>`
@@ -173,7 +174,7 @@ function chooseAll()
             html += `<img src = "${product.productImage}" class = "card-img" alt="...">`;
             html += `<class = "card-img-overlay">`
             html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
-            html += `<h7 class="card-title">`+ "$" + product.productPrice + `</h7>`;
+            html += `<h7 class="card-price">`+ "$" + product.productPrice + `</h7>`;
             html += `<br>`
             html += `<button onclick = "addToCart()"> Add To Cart</button>`
             html += `</div>`
@@ -184,21 +185,46 @@ function chooseAll()
 		console.log(error);
 	})
 }
-function addToCart()
+function addToCart(id)
 {
-    var addToCartButton = document.getElementsByClassName("card")
+    console.log(document.getElementById("categories").value);
     const url = baseUrl;
+    console.log(id);
 
     fetch(baseUrl).then(function(response){
         return response.json();
     }).then(function(json){
         console.log(json);
-        if(product.ProductId = "@productId")
-        {
-            // console.log("Email and password match!");
-            console.log(product.ProductName);
-        };
+        json.forEach((product) => {
+            console.log(json.productId);
+            if(product.productId == ProductId)
+            {
+                console.log(product);
+                console.log(product.productName);
+            };
+        })
     }).catch(function(error){
         console.log(error);
-    });
+    // });
+    // const postUrl = baseUrl;
+    // const sendCart = {
+    //     productId: document.getElementById("productId").value,
+    //     custLName: document.getElementById("custLName").value,
+    //     custEmail: document.getElementById("custEmail").value,
+    //     custPassword: document.getElementById("custPassword").value,
+    //     cardName: document.getElementById("cardName").value,
+    //     cardNo: document.getElementById("cardNo").value,
+    //     cardMonth: document.getElementById("cardMonth").value,
+    //     cardYear: document.getElementById("cardYear").value,
+    //     cvvNo: document.getElementById("cvvNo").value,
+    // } 
+    // fetch(postUrl, {
+    //     method: "POST",
+    //     headers: {
+    //         "Accept": 'application/json',
+    //         "Content-Type": 'application/json',
+    //     },
+    //     body: JSON.stringify(sendCust)
+    })
+    // window.location.href = "./groceries_main.html"
 }

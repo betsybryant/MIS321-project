@@ -66,7 +66,7 @@ namespace Api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
             
-            string stm = @"UPDATE customer SET OrderCompleteDate = @OrderCompleteDate WHERE orderId = @orderId";
+            string stm = @"UPDATE orders SET OrderCompleteDate = @OrderCompleteDate WHERE orderId = @orderId";
             using var cmd = new MySqlCommand(stm, con);
             cmd.Parameters.AddWithValue("@orderId", order.OrderId);
             cmd.Parameters.AddWithValue("@orderCompleteDate", order.OrderCompleteDate);
