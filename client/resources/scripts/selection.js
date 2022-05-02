@@ -176,7 +176,7 @@ function chooseAll()
             html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
             html += `<h7 class="card-price">`+ "$" + product.productPrice + `</h7>`;
             html += `<br>`
-            html += `<button onclick = "addToCart(product.productId)"> Add To Cart</button>`
+            html += `<button onclick = "addToCart(` + product.productId + `)"> Add To Cart</button>`
             html += `</div>`
 		});
         document.getElementById("productPlacement").innerHTML = html;
