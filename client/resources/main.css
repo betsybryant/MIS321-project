@@ -18,3 +18,10 @@ button{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
   
 }
+/*** footer ***/
+footer{
+  color:#ffffff;
+  padding-left: 40%;
+  background-color: #484848;
+  border: 5px solid #62e56a;
+}

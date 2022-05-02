@@ -6,7 +6,7 @@
     <link rel="icon" href="../client/resources/images/tidemarketlogo_trans.png">
     <link href="../client/resources/cust_update.css" rel="stylesheet">
     <script src = "./resources/scripts/cust_update.js"></script>
-    <title>Tide Market: Update Payment</title>
+    <title>Customer: Update Payment</title>
 </head>
 <!--  NAVIGATION BAR CODE : Title and Logo // Home / Shop / About / Login Button / Cart Logo? -->
 <!-- Bootstrap -->
@@ -18,7 +18,7 @@
       <b>Tide Market</b>
       </a>
       <a class="nav-link active" aria-current="page" href="./main.html">Home</a>
-          <a class="nav-link" href="./groceries_main.html">Shop</a>
+          <a class="nav-link" href="./selection.html">Shop</a>
           <a class="nav-link" href="./about.html">About</a>
           <a class="nav-link" href="./cust_login.html">Login</a>
           <a class="nav-link disabled">Cart</a>
@@ -26,26 +26,27 @@
   </nav>
   <!-- end navigation -->
 <body>
-    <img id="tidemarketmainpagelogo" src="../client/resources/images/tidemarketlogo.png">
-    <p class="lead">Update Tide Market Account Payment Info </p>
+    <p style="text-align:center;"> <img id="tidemarketmainpagelogo" src="../client/resources/images/tidemarketlogo.png" width="250"></p>
+    <p style="text-align:center;" class="lead">Update Tide Market Account Payment Info </p>
     <div class="container">
-
+      <p style="text-align:center;">
       <label for="cdn"><b>Name on Card</b></label>
-      <input type="text" placeholder="Enter Card Name" name="cardName" required>
+      <input type="text" placeholder="Enter Card Name" name="cardName" required><br>
 
-      <br><br><label for="cardno"><b>Card Number</b></label>
+      <br><label for="cardno"><b>Card Number</b></label>
       <input type="text" placeholder="Enter Card Number" name="cardNo" required>
 
       <br><br><label for="cddate"><b>Expiration Month</b></label>
-      <input type="text" placeholder="Enter Ex Date (mm)" name="cardMonth" required> <br>
+      <input type="text" placeholder="Enter Ex Date (mm)" name="cardMonth" required>
 
       <br><br><label for="cddate"><b>Expiration Year</b></label>
       <input type="text" placeholder="Enter Ex Year (yyyy)" name="cardYear" required> <br>
 
-      <br><br><label for="cvvno"><b>CVV Number</b></label> 
+      <br><label for="cvvno"><b>CVV Number</b></label> 
       <input type="text" placeholder="Enter CVV" name="cvvNo" required>
-
+        <br><br>
       <button onclick="updatePayment();">Update Payment</button>
+    </p>
     </div>
 </body>
 </html>
