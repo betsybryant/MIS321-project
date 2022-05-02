@@ -232,6 +232,7 @@ function addToCart(id)
     // window.location.href = "./groceries_main.html"
 }
 
+
 function placeOrder(){
     
 }
