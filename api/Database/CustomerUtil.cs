@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Api.Database
 {
-    public class CustomerUtil : ICreateCustomer, IUpdateCustomer, IReadCustomer
+    public class CustomerUtil : ICreateCustomer, IReadCustomer
     {
         public void Create(Customer customer)
         {
@@ -75,14 +75,18 @@ namespace Api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
             
-            string stm = @"UPDATE customer SET CardNo = @CardNo WHERE Id = @Id"; ///////////fix BB
-            stm = @"UPDATE customer SET CvvNo = @CvvNo WHERE Id = @Id";
-            stm = @"UPDATE customer SET Date = @CardNo WHERE Date = @Date";
+            string stm = @"UPDATE customers SET cardName = @cardName WHERE custId = @custId";
+            stm = @"UPDATE customers SET cardNo = @cardNo WHERE custId = @custId"; 
+            stm = @"UPDATE customers SET cardMonth = @cardMonth WHERE custId = @custId";
+            stm = @"UPDATE customers SET cardYear = @cardYear WHERE custId = @custId";
+            stm = @"UPDATE customers SET cvvNo = @cvvNo WHERE custId = @custId";
             using var cmd = new MySqlCommand(stm, con);
             cmd.Parameters.AddWithValue("@custId", customer.CustId);
-            cmd.Parameters.AddWithValue("@cvvNo", customer.CvvNo);
+            cmd.Parameters.AddWithValue("@cardName", customer.CardName);
+            cmd.Parameters.AddWithValue("@cardNo", customer.CardNo);
             cmd.Parameters.AddWithValue("@cardMonth", customer.CardMonth);
             cmd.Parameters.AddWithValue("@cardYear", customer.CardYear);
+            cmd.Parameters.AddWithValue("@cvvNo", customer.CvvNo);
 
             cmd.Prepare();
             cmd.ExecuteNonQuery();

@@ -1,16 +1,9 @@
-const baseUrl = "https://localhost:5001/api/Customers";
-
-function test(){
-    console.log(sessionStorage.getItem("custEmail"));
-    console.log(sessionStorage.getItem("custPassword"));
-}
-
+baseUrl = "https://localhost:5001/api/Customers";
 
 function custLogin(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
 
-    const url = baseUrl;
 
 
 
@@ -22,34 +15,29 @@ function custLogin(){
     }).then(function(json){
         console.log(json);
         json.forEach((customer) => {
-            console.log(customer.custFName)
             if(email === customer.custEmail && password === customer.custPassword)
             {
-                console.log("Email and password match!");
                 sessionStorage.setItem("custEmail", customer.custEmail);
                 sessionStorage.setItem("custPassword", customer.custPassword);
+                console.log(email);
+                window.location.href = "./selection.html";
+            }
+            else
+            {
+                incorrectPassword();
+
             }
 		});
     }).catch(function(error){
         console.log(error);
     });
-
-    // fetch(url).then(function(response) {
-	// 	console.log(response);
-	// 	return response.json();
-	// }).then(function(json) {
-    //     console.log(json)
-	// 	json.forEach((customer) => {
-    //         console.log(customer.custId);
-	// 	});
-
-	// }).catch(function(error) {
-	// 	console.log(error);
-	// })
-
 }
-
-
+function incorrectPassword()
+{
+    let html = ``;
+    html += `<h9>Incorrect Email or Password</h9>`;
+    document.getElementById("incorrectPassword").innerHTML = html;
+}
 
 
 
