@@ -1,11 +1,5 @@
 baseUrl = "https://localhost:5001/api/Customers";
 
-function test(){
-    console.log(sessionStorage.getItem("custEmail"));
-    console.log(sessionStorage.getItem("custPassword"));
-}
-
-
 function custLogin(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -28,12 +22,22 @@ function custLogin(){
                 console.log(email);
                 window.location.href = "./selection.html";
             }
+            else
+            {
+                incorrectPassword();
+
+            }
 		});
     }).catch(function(error){
         console.log(error);
     });
 }
-
+function incorrectPassword()
+{
+    let html = ``;
+    html += `<h9>Incorrect Email or Password</h9>`;
+    document.getElementById("incorrectPassword").innerHTML = html;
+}
 
 
 
