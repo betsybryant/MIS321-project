@@ -1,4 +1,6 @@
 const baseUrl = "https://localhost:5001/api/Products";
+var cartTotal = 0;
+
 function chooseVeg()
 {
     fetch(baseUrl).then(function(response) 
@@ -17,7 +19,7 @@ function chooseVeg()
                 html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
                 html += `<h7 class="card-title">`+ "$" + product.productPrice + `</h7>`;
                 html += `<br>`
-                html += `<button onclick = "addToCart()"> Add To Cart</button>`
+                html += `<button onclick = "addToCart(` + product.productId + `)"> Add To Cart</button>`
                 html += `</div>`
             }
             else
@@ -50,7 +52,7 @@ function chooseGrains()
                 html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
                 html += `<h7 class="card-title">`+ "$" + product.productPrice + `</h7>`;
                 html += `<br>`
-                html += `<button onclick = "addToCart()"> Add To Cart</button>`
+                html += `<button onclick = "addToCart(` + product.productId + `)"> Add To Cart</button>`
                 html += `</div>`
             }
             else
@@ -82,7 +84,7 @@ function chooseDairy()
                 html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
                 html += `<h7 class="card-title">`+ "$" + product.productPrice + `</h7>`;
                 html += `<br>`
-                html += `<button onclick = "addToCart()"> Add To Cart</button>`
+                html += `<button onclick = "addToCart(` + product.productId + `)"> Add To Cart</button>`
                 html += `</div>`
             }
             else
@@ -114,7 +116,7 @@ function chooseMeats()
                 html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
                 html += `<h7 class="card-title">`+ "$" + product.productPrice + `</h7>`;
                 html += `<br>`
-                html += `<button onclick = "addToCart()"> Add To Cart</button>`
+                html += `<button onclick = "addToCart(` + product.productId + `)"> Add To Cart</button>`
                 html += `</div>`
             }
             else
@@ -146,7 +148,7 @@ function chooseFruit()
                 html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
                 html += `<h7 class="card-title">`+ "$" + product.productPrice + `</h7>`;
                 html += `<br>`
-                html += `<button onclick = "addToCart()"> Add To Cart</button>`
+                html += `<button onclick = "addToCart(` + product.productId + `)"> Add To Cart</button>`
                 html += `</div>`
             }
             else
@@ -188,20 +190,20 @@ function chooseAll()
 
 function addToCart(id)
 {
-    console.log(document.getElementById("categories").value);
     const url = baseUrl;
-    console.log(id);
 
     fetch(baseUrl).then(function(response){
         return response.json();
     }).then(function(json){
         console.log(json);
         json.forEach((product) => {
-            console.log(product.productId);
-            if(product.productId == ProductId)
+            if(product.productId == id)
             {
-                console.log(product);
-                console.log(product.productName);
+                //addCart(product, id);
+                // sessionStorage.setItem("cartTotal", cartTotal + 10);
+                // console.log("Cart Total:" + sessionStorage.getItem("cartTotal"));
+                cartTotal += 10;
+                console.log("Cart Total = " + cartTotal);
             };
         })
     }).catch(function(error){
@@ -228,4 +230,8 @@ function addToCart(id)
     //     body: JSON.stringify(sendCust)
     })
     // window.location.href = "./groceries_main.html"
+}
+
+function placeOrder(){
+    
 }
