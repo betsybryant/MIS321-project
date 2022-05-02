@@ -1,5 +1,5 @@
 const baseUrl = "https://localhost:5001/api/Products";
-const orderUrl = "https://localhost:5001/api/Orders"
+//const orderUrl = "https://localhost:5001/api/Orders";
 var cartTotal = 0;
 //sessionStorage.setItem("cartTotal", "0");
 
@@ -203,9 +203,9 @@ function addToCart(id)
             {
                 //addCart(product, id);
                 cartTotal += product.productPrice;
-                //sessionStorage.setItem("cartTotal", parseInt(sessionStorage.getItem("cartTotal")) + product.productPrice);
+                sessionStorage.setItem("cartTotal", cartTotal);
                 console.log("Cart Total = " + cartTotal);
-                //console.log("sessionStorage cartTotal = " + sessionStorage.getItem("cartTotal"));
+                console.log("sessionStorage cartTotal = " + sessionStorage.getItem("cartTotal"));
             };
         })
     }).catch(function(error){
@@ -238,10 +238,11 @@ function addToCart(id)
 function placeOrder(){
     const postUrl = orderUrl;
     const sendOrder = {
+        orderId: 1,
         orderRecordDate: Date(),
-        orderCompletedDate: null,
-        orderProduct: null,
-        orderTotal: cartTotal,
+        orderCompletedDate: Date(),
+        orderProduct: 'Test',
+        orderTotal: parseFloat(sessionStorage.getItem("cartTotal")),
         // custFName: document.getElementById("custFName").value,
         // custLName: document.getElementById("custLName").value,
         // custEmail: document.getElementById("custEmail").value,
@@ -260,4 +261,9 @@ function placeOrder(){
         },
         body: JSON.stringify(sendOrder)
     })
+    console.log("Order placed for $" + sessionStorage.getItem("cartTotal"));
+}
+
+function testOrder(){
+    console.log("Cart Total= $" + sessionStorage.getItem("cartTotal"));
 }
