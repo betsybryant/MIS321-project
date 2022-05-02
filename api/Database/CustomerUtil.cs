@@ -75,11 +75,11 @@ namespace Api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
             
-            string stm = @"UPDATE customer SET cardName = @cardName WHERE custId = @custId";
-            stm = @"UPDATE customer SET cardNo = @cardNo WHERE custId = @custId"; 
-            stm = @"UPDATE customer SET cardMonth = @cardMonth WHERE custId = @custId";
-            stm = @"UPDATE customer SET cardYear = @cardYear WHERE custId = @custId";
-            stm = @"UPDATE customer SET cvvNo = @cvvNo WHERE custId = @custId";
+            string stm = @"UPDATE customers SET cardName = @cardName WHERE custId = @custId";
+            stm = @"UPDATE customers SET cardNo = @cardNo WHERE custId = @custId"; 
+            stm = @"UPDATE customers SET cardMonth = @cardMonth WHERE custId = @custId";
+            stm = @"UPDATE customers SET cardYear = @cardYear WHERE custId = @custId";
+            stm = @"UPDATE customers SET cvvNo = @cvvNo WHERE custId = @custId";
             using var cmd = new MySqlCommand(stm, con);
             cmd.Parameters.AddWithValue("@custId", customer.CustId);
             cmd.Parameters.AddWithValue("@cardName", customer.CardName);

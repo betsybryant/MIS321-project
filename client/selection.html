@@ -23,43 +23,23 @@
           <a class="nav-link" href="./selection.html">Shop</a>
           <a class="nav-link" href="./about.html">About</a>
           <a class="nav-link" href="./cust_login.html">Login</a>
-          <a class="nav-link disabled">Cart</a>
+          <a class="nav-link" href="./cart.html">Cart</a>
     </div>
   </nav>
   <!-- end navigation -->
 
   <body>
     <h1>Please select a category</h1>
-    <div>
-        <table id = "veg"> 
-           <th>Vegatables</th>
-        </table>
-        <button onclick="chooseVeg();">Click Here</button><br></br>
-
-        <table id = "grain">
-            <th>Grains</th>
-        </table>
-        <button onclick="chooseGrains();">Click Here</button><br></br>
-
-        <table id = "dairy">
-            <th>Dairy</th>
-        </table>
-        <button onclick="chooseDairy();">Click Here</button><br></br>
-
-        <table id = "meat">
-            <th>Meats</th>
-        </table>
-        <button onclick="chooseMeats();">Click Here</button><br></br>
-
-        <table id = "fruit">
-            <th>Fruit</th>
-        </table>
-        <button onclick="chooseFruit();">Click Here</button><br></br>
-
-        <table id = "all">
-            <th>View All</th>
-        </table>
-        <button onclick="chooseAll();">Click Here</button><br></br>
+    <div class="container">
+        <div id="categories" class="row">
+        <button onclick="chooseVeg();">Vegetables</button><br></br>
+        <button onclick="chooseGrains();">Grains</button><br></br>
+        <button onclick="chooseDairy();">Dairy</button><br></br>
+        <button onclick="chooseMeats();">Meats</button><br></br>
+        <button onclick="chooseFruit();">Fruit</button><br></br>
+        <button onclick="chooseAll();">View All</button><br></br>
+        </div>
+    </div>
 
         <div class="container">
             <div id="productPlacement" class="row"></div>
