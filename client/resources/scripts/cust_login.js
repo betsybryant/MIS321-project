@@ -29,7 +29,7 @@ function custLogin(){
                 sessionStorage.setItem("custFName", customer.custFName);
                 sessionStorage.setItem("custLName", customer.custLName);
                 console.log("Login successful");
-                //window.location.href = "./selection.html";
+                window.location.href = "./selection.html";
             }
             // else
             // {

@@ -7416,11 +7416,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/betsybryant/Desktop/MIS321/MIS321-project/api/api.csproj",
+      "projectUniqueName": "/Users/betsybryant/Desktop/MIS321-project/api/api.csproj",
       "projectName": "api",
-      "projectPath": "/Users/betsybryant/Desktop/MIS321/MIS321-project/api/api.csproj",
+      "projectPath": "/Users/betsybryant/Desktop/MIS321-project/api/api.csproj",
       "packagesPath": "/Users/betsybryant/.nuget/packages/",
-      "outputPath": "/Users/betsybryant/Desktop/MIS321/MIS321-project/api/obj/",
+      "outputPath": "/Users/betsybryant/Desktop/MIS321-project/api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/betsybryant/.nuget/NuGet/NuGet.Config"

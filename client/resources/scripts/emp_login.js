@@ -26,6 +26,7 @@ function empLogin(){
                 console.log("Email and password match!");
                 sessionStorage.setItem("empEmail", employee.empEmail);
                 sessionStorage.setItem("empPassword", employee.empPassword);
+                window.location.href = "./emp_ordcom.html";
             }
 		});
     }).catch(function(error){
