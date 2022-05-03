@@ -1,11 +1,9 @@
 const orderUrl = "https://localhost:5001/api/Orders";
-const empUrl = "https://localhost:5001/api/Employees";
 
 function placeOrder(){
     if (sessionStorage.getItem("custEmail") != null){
         const postUrl = orderUrl;
         const sendOrder = {
-            //orderId: 2,
             custId: parseInt(sessionStorage.getItem("custId")),
             orderRecordDate: new Date().toISOString(),
             orderProduct: "Test Product",
@@ -26,36 +24,33 @@ function placeOrder(){
         console.log("custEmail is null. Customer needs to login");
     }
 }
-
-function testing(){
-    console.log("TESTING");
-}
-
-function createEmployee(){
-    const postUrl = empUrl;
-    const sendEmp = {
-        //empId: 2,
-        empFName: "Alex",
-        empLName: "Payne",
-        empEmail: "ampayne4@crimson.ua.edu",
-        empPassword: "password123"
-        // custFName: document.getElementById("custFName").value,
-        // custLName: document.getElementById("custLName").value,
-        // custEmail: document.getElementById("custEmail").value,
-        // custPassword: document.getElementById("custPassword").value,
-        // cardName: document.getElementById("cardName").value,
-        // cardNo: document.getElementById("cardNo").value,
-        // cardMonth: document.getElementById("cardMonth").value,
-        // cardYear: document.getElementById("cardYear").value,
-        // cvvNo: document.getElementById("cvvNo").value,
-    }
-    fetch(empUrl, {
-        method: "POST",
-        headers: {
-            "Accept": 'application/json',
-            "Content-Type": 'application/json',
-        },
-        body: JSON.stringify(sendEmp)
-    })
-    // window.location.href = "./groceries_main.html"
+function handleOnLoad()
+{
+    fetch(orderUrl).then(function(response) 
+    {
+		console.log(response);
+		return response.json();
+	}).then(function(json) {
+        console.log(json)
+        let html = ``;
+		json.forEach((order) => {
+            if(order.completed == '1')
+            {
+                if(order.custId == parseInt(sessionStorage.getItem("custId")))
+                {
+                    html += `<div>`;
+                    html += `<h8 class = "row">`+ "Order number: " + order.orderId + `</h8>`;
+                    html += `<h8 class = "row">`+ "Total: " + '$' + order.orderTotal + `</h8>`;
+                    html += `<br></br>`;
+                }
+            }
+            else
+            {
+                html += ``;
+            }
+		});
+        document.getElementById("pastOrders").innerHTML = html;
+	}).catch(function(error) {
+		console.log(error);
+	})
 }

@@ -9,7 +9,6 @@ function orderComplete()
         else elem.value = "Complete";
     }
 }
-
 function handleOnLoad()
 {
     fetch(orderUrl).then(function(response) 
@@ -34,7 +33,6 @@ function handleOnLoad()
             }
 		});
         document.getElementById("orderComplete").innerHTML = html;
-
 	}).catch(function(error) {
 		console.log(error);
 	})
