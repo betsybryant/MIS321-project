@@ -2,24 +2,29 @@ const orderUrl = "https://localhost:5001/api/Orders";
 const empUrl = "https://localhost:5001/api/Employees";
 
 function placeOrder(){
-    const postUrl = orderUrl;
-    const sendOrder = {
-        //orderId: 2,
-        custId: 99,
-        orderRecordDate: new Date().toISOString(),
-        orderCompleteDate: new Date().toISOString(),
-        orderProduct: "Test 99",
-        orderTotal: parseFloat(sessionStorage.getItem("cartTotal"))
+    if (sessionStorage.getItem("custEmail") != null){
+        const postUrl = orderUrl;
+        const sendOrder = {
+            //orderId: 2,
+            custId: 15,
+            orderRecordDate: new Date().toISOString(),
+            orderProduct: "Test 99",
+            orderTotal: parseFloat(sessionStorage.getItem("cartTotal")),
+            completed: 0
+        }
+        fetch(postUrl, {
+            method: "POST",
+            headers: {
+                "Accept": 'application/json',
+                "Content-Type": 'application/json',
+            },
+            body: JSON.stringify(sendOrder)
+        })
+        console.log("Order placed for $" + parseFloat(sessionStorage.getItem("cartTotal")));
     }
-    fetch(postUrl, {
-        method: "POST",
-        headers: {
-            "Accept": 'application/json',
-            "Content-Type": 'application/json',
-        },
-        body: JSON.stringify(sendOrder)
-    })
-    console.log("Order placed for $" + parseFloat(sessionStorage.getItem("cartTotal")));
+    else{
+        console.log("custEmail is null. Customer needs to login");
+    }
 }
 
 function testing(){

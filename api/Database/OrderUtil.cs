@@ -15,16 +15,16 @@ namespace Api.Database
             using var con = new MySqlConnection(cs);
             con.Open();  
 
-            string stm = @"INSERT INTO orders(orderId, custId, orderRecordDate, orderCompleteDate, orderProduct, orderTotal) 
-                VALUES(@orderId, @custId, @orderRecordDate, @orderCompleteDate, @orderProduct, @orderTotal)";
+            string stm = @"INSERT INTO orders(orderId, custId, orderRecordDate, orderProduct, orderTotal, completed) 
+                VALUES(@orderId, @custId, @orderRecordDate, @orderProduct, @orderTotal, @completed)";
 
             using var cmd = new MySqlCommand(stm, con);
             cmd.Parameters.AddWithValue("@orderId", order.OrderId);
             cmd.Parameters.AddWithValue("@custId", order.CustId);
             cmd.Parameters.AddWithValue("@orderRecordDate", order.OrderRecordDate);
-            cmd.Parameters.AddWithValue("@orderCompleteDate", order.OrderCompleteDate);
             cmd.Parameters.AddWithValue("@orderProduct", order.OrderProduct);
             cmd.Parameters.AddWithValue("@orderTotal", order.OrderTotal);
+            cmd.Parameters.AddWithValue("@completed", order.Completed);
             cmd.Prepare();
             cmd.ExecuteNonQuery();
         }
@@ -47,9 +47,9 @@ namespace Api.Database
                     OrderId = read.GetInt32(0),
                     CustId = read.GetInt32(1),
                     OrderRecordDate = read.GetDateTime(2),
-                    OrderCompleteDate = read.GetDateTime(3),
-                    OrderProduct = read.GetString(4),
-                    OrderTotal = read.GetDouble(5),
+                    OrderProduct = read.GetString(3),
+                    OrderTotal = read.GetDouble(4),
+                    Completed = read.GetInt32(5)
                 });
             }
             return myOrder;
@@ -68,10 +68,10 @@ namespace Api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
             
-            string stm = @"UPDATE orders SET OrderCompleteDate = @OrderCompleteDate WHERE orderId = @orderId";
+            string stm = @"UPDATE orders SET completed = @completed WHERE orderId = @orderId";
             using var cmd = new MySqlCommand(stm, con);
             cmd.Parameters.AddWithValue("@orderId", order.OrderId);
-            cmd.Parameters.AddWithValue("@orderCompleteDate", order.OrderCompleteDate);
+            cmd.Parameters.AddWithValue("@completed", order.Completed);
 
             cmd.Prepare();
             cmd.ExecuteNonQuery();

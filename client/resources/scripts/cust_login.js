@@ -1,5 +1,9 @@
 baseUrl = "https://localhost:5001/api/Customers";
 
+function testStorage(){
+    console.log("sessionStorage custEmail = " + sessionStorage.getItem("custEmail"));
+}
+
 function custLogin(){
     var email = document.getElementById("email").value;
     var password = document.getElementById("password").value;
@@ -11,7 +15,7 @@ function custLogin(){
         return response.json();
     }).then(function(json){
         console.log(json);
-        console.log("starting foreach");
+        //console.log("starting foreach");
         json.forEach((customer) => {
             // console.log(email);
             // console.log(customer.custEmail);
