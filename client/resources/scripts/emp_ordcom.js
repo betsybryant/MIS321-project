@@ -20,7 +20,7 @@ function handleOnLoad()
         console.log(json)
         let html = ``;
 		json.forEach((order) => {
-            if(order.completed = 'false')
+            if(order.completed == 0)
             {
                 html += `<div>`;
                 html += `<h5 class = "row">`+ "Order number: " + order.orderId + `</h5>`;
@@ -28,7 +28,7 @@ function handleOnLoad()
                 html += `<button onclick = "lookForCompleteOrder(` + order.orderId + `)">Complete Order</button>`;
                 html += `<br></br>`;
             }
-            else
+            else if(order.completed == 1)
             {
                 html += ``;
             }
@@ -51,6 +51,10 @@ function completeOrder(id)
     }).then((response) => {
         console.log(response);
     })
+    setTimeout(() => {
+        document.getElementById("orderComplete").innerHTML = "";
+        handleOnLoad();
+        }, 2000);
 }
 function lookForCompleteOrder(id)
 {
