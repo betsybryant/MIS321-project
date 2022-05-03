@@ -5,10 +5,10 @@ function placeOrder(){
     const postUrl = orderUrl;
     const sendOrder = {
         //orderId: 2,
-        orderRecordDate: new Date().toString(),
-        orderCompleteDate: null,
+        orderRecordDate: new Date().toISOString(),
+        orderCompleteDate: new Date().toISOString(),
         orderProduct: "Test",
-        orderTotal: 10
+        orderTotal: parseFloat(sessionStorage.getItem("cartTotal"))
     }
     fetch(postUrl, {
         method: "POST",

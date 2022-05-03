@@ -1,27 +1,3 @@
-const baseUrl ="https://localhost:5001/api/Orders";
-var fieldList = ["OrderId", "OrderRecordDate", "OrderCompleteDate", "OrderProduct", "OrderTotal"];
-
-function handleOnLoad(){
-    const orderUrl = baseUrl;
-
-    fetch(orderUrl).then(function(response){
-        return response.json();
-    }).then(function(json){
-        displayTable(json);
-    });
-}
-function displayTable(json)
-{
-    fieldlists = json;
-    let html = "<table>";
-    html += "<tr><th><h1>Order #</h1></th><th><h1>Complete<h1><th></tr>";
-    fieldlists.forEach((lists) => {
-        html+=`<tr><td>${fieldlists.OrderId}</td><td>`;
-        html += `<button id = "ordcom" onclick = "orderComplete"> Complete</button></td><tr>`; //creates button in table
-    });
-    html += "</table>";
-    document.getElementById("ordercomplete").innerHTML =html;
-}
 function orderComplete()
 {
     {
@@ -30,4 +6,31 @@ function orderComplete()
         if (elem.value=="Complete") elem.value = "Order Completed ";
         else elem.value = "Complete";
     }
+const orderUrl = "https://localhost:5001/api/Orders";
+const baseUrl = "https://localhost:5001/api/Products";
+
+function chooseAll()
+{
+    fetch(baseUrl).then(function(response) 
+    {
+		console.log(response);
+		return response.json();
+	}).then(function(json) {
+        console.log(json)
+        let html = ``;
+		json.forEach((product) => {
+            html += `<div class="card col-md-4 bg-light text-dark">`;
+            // html += `<img src = "${product.productImage}" class = "card-img" alt="...">`;
+            html += `<class = "card-img-overlay">`
+            html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
+            html += `<h7 class="card-price">`+ "$" + product.productPrice + `</h7>`;
+            html += `<br>`
+            html += `<button onclick = "addToCart(` + product.productId + `)"> Add To Cart</button>`
+            html += `</div>`
+		});
+        document.getElementById("productPlacement").innerHTML = html;
+
+	}).catch(function(error) {
+		console.log(error);
+	})
 }
