@@ -1,3 +1,11 @@
+function orderComplete()
+{
+    {
+        // changing button from complete to order completed once button clicked
+        var elem = document.getElementById("mordcom");
+        if (elem.value=="Complete") elem.value = "Order Completed ";
+        else elem.value = "Complete";
+    }
 const orderUrl = "https://localhost:5001/api/Orders";
 const baseUrl = "https://localhost:5001/api/Products";
 
