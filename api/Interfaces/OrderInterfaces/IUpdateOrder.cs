@@ -3,6 +3,6 @@ namespace Api.Interfaces.OrderInterfaces
 {
     public interface IUpdateOrder
     {
-         public void Update(Order order);
+         public void Update(int id);
     }
 }

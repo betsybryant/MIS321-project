@@ -48,7 +48,7 @@ namespace Api.Controller
         public void Put(int id)
         {
             OrderUtil orderUtil = new OrderUtil();
-            // customerUtil.Update();
+            orderUtil.Update(id);
         }
 
         // DELETE: api/Customers/5
