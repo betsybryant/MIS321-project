@@ -25,6 +25,9 @@ function custLogin(){
             {
                 sessionStorage.setItem("custEmail", customer.custEmail);
                 sessionStorage.setItem("custPassword", customer.custPassword);
+                sessionStorage.setItem("custId", customer.custId);
+                sessionStorage.setItem("custFName", customer.custFName);
+                sessionStorage.setItem("custLName", customer.custLName);
                 console.log("Login successful");
                 //window.location.href = "./selection.html";
             }

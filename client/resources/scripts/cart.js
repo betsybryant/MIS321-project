@@ -6,9 +6,9 @@ function placeOrder(){
         const postUrl = orderUrl;
         const sendOrder = {
             //orderId: 2,
-            custId: 15,
+            custId: parseInt(sessionStorage.getItem("custId")),
             orderRecordDate: new Date().toISOString(),
-            orderProduct: "Test 99",
+            orderProduct: "Test Product",
             orderTotal: parseFloat(sessionStorage.getItem("cartTotal")),
             completed: 0
         }
@@ -20,7 +20,7 @@ function placeOrder(){
             },
             body: JSON.stringify(sendOrder)
         })
-        console.log("Order placed for $" + parseFloat(sessionStorage.getItem("cartTotal")));
+        console.log(sessionStorage.getItem("custFName") + " " + sessionStorage.getItem("custLName") + " placed an order for $" + parseFloat(sessionStorage.getItem("cartTotal")));
     }
     else{
         console.log("custEmail is null. Customer needs to login");
