@@ -37,6 +37,7 @@ namespace Api.Controller
         [HttpPost]
         public void Post([FromBody] Order order)
         {
+            //System.Console.WriteLine("made it to controller");
             OrderUtil orderUtil = new OrderUtil();
             orderUtil.Create(order);
         }

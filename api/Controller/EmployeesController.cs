@@ -32,14 +32,14 @@ namespace Api.Controller
         // //     // return customerUtil.GetOne();
         // // }
 
-        // POST: api/Customers
-        // [EnableCors("OpenPolicy")]
-        // [HttpPost]
-        // public void Post([FromBody] Employee employee)
-        // {
-        //     EmployeeUtil employeeUtil = new EmployeeUtil();
-        //     employeeUtil.Create(employee);
-        // }
+        //POST: api/Customers
+        [EnableCors("OpenPolicy")]
+        [HttpPost]
+        public void Post([FromBody] Employee employee)
+        {
+            EmployeeUtil employeeUtil = new EmployeeUtil();
+            employeeUtil.Create(employee);
+        }
 
         // PUT: api/Customers/5
         [EnableCors("OpenPolicy")]
