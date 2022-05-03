@@ -32,6 +32,9 @@ function handleOnLoad()
 		return response.json();
 	}).then(function(json) {
         console.log(json)
+        let html1 = ``;
+        html1 += "OrderTotal: $" + parseFloat(sessionStorage.getItem("cartTotal"));
+        document.getElementById("orderTotal").innerHTML = html1;
         let html = ``;
 		json.forEach((order) => {
             if(order.completed == '1')
@@ -42,6 +45,11 @@ function handleOnLoad()
                     html += `<h8 class = "row">`+ "Order number: " + order.orderId + `</h8>`;
                     html += `<h8 class = "row">`+ "Total: " + '$' + order.orderTotal + `</h8>`;
                     html += `<br></br>`;
+                    document.getElementById("pastOrders").innerHTML = html;
+                }
+                else
+                {
+                    html += ``;
                 }
             }
             else
@@ -49,7 +57,6 @@ function handleOnLoad()
                 html += ``;
             }
 		});
-        document.getElementById("pastOrders").innerHTML = html;
 	}).catch(function(error) {
 		console.log(error);
 	})
