@@ -1,3 +1,5 @@
+const orderUrl = "https://localhost:5001/api/Orders";
+const baseUrl = "https://localhost:5001/api/Products";
 function orderComplete()
 {
     {
@@ -6,30 +8,65 @@ function orderComplete()
         if (elem.value=="Complete") elem.value = "Order Completed ";
         else elem.value = "Complete";
     }
-const orderUrl = "https://localhost:5001/api/Orders";
-const baseUrl = "https://localhost:5001/api/Products";
+}
 
-function chooseAll()
+function handleOnLoad()
 {
-    fetch(baseUrl).then(function(response) 
+    fetch(orderUrl).then(function(response) 
     {
 		console.log(response);
 		return response.json();
 	}).then(function(json) {
         console.log(json)
         let html = ``;
-		json.forEach((product) => {
-            html += `<div class="card col-md-4 bg-light text-dark">`;
-            // html += `<img src = "${product.productImage}" class = "card-img" alt="...">`;
-            html += `<class = "card-img-overlay">`
-            html += `<h5 class = "card-title">`+ product.productName + `</h5>`;
-            html += `<h7 class="card-price">`+ "$" + product.productPrice + `</h7>`;
-            html += `<br>`
-            html += `<button onclick = "addToCart(` + product.productId + `)"> Add To Cart</button>`
-            html += `</div>`
+		json.forEach((order) => {
+            if(order.completed = 'false')
+            {
+                html += `<div>`;
+                html += `<h5 class = "row">`+ "Order number: " + order.orderId + `</h5>`;
+                html += `<h5 class = "row">`+ "Total: " + '$' + order.orderTotal + `</h5>`;
+                html += `<button onclick = "lookForCompleteOrder(` + order.orderId + `)">Complete Order</button>`;
+                html += `<br></br>`;
+            }
+            else
+            {
+                html += ``;
+            }
 		});
-        document.getElementById("productPlacement").innerHTML = html;
+        document.getElementById("orderComplete").innerHTML = html;
 
+	}).catch(function(error) {
+		console.log(error);
+	})
+}
+function completeOrder(id)
+{
+    const completeUrl = orderUrl + "/" + id;
+    fetch(completeUrl, {
+        method: "PUT",
+        headers: {
+            "Accept": 'application/json',
+            "Content-Type": 'application/json',
+        },
+    }).then((response) => {
+        console.log(response);
+    })
+}
+function lookForCompleteOrder(id)
+{
+    fetch(orderUrl).then(function(response) 
+    {
+		console.log(response);
+		return response.json();
+	}).then(function(json) {
+        console.log(json)
+		json.forEach((order) => {
+            if(order.orderId == id) {
+                completeOrder(order.orderId);
+                console.log(order.orderId);
+                console.log(id);
+            }
+		});
 	}).catch(function(error) {
 		console.log(error);
 	})

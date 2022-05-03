@@ -60,7 +60,7 @@ namespace Api.Database
         //     throw new System.NotImplementedException();
         // }
 
-        public void Update(Order order)
+        public void Update(int id)
         {
             ConnectionString myConnection = new ConnectionString();
             string cs = myConnection.cs;
@@ -68,10 +68,9 @@ namespace Api.Database
             using var con = new MySqlConnection(cs);
             con.Open();
             
-            string stm = @"UPDATE orders SET completed = @completed WHERE orderId = @orderId";
+            string stm = @"UPDATE orders SET completed = 1 WHERE orderId = @orderId";
             using var cmd = new MySqlCommand(stm, con);
-            cmd.Parameters.AddWithValue("@orderId", order.OrderId);
-            cmd.Parameters.AddWithValue("@completed", order.Completed);
+            cmd.Parameters.AddWithValue("@orderId", id);
 
             cmd.Prepare();
             cmd.ExecuteNonQuery();

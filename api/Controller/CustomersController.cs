@@ -44,10 +44,10 @@ namespace Api.Controller
         // PUT: api/Customers/5
         [EnableCors("OpenPolicy")]
         [HttpPut]
-        public void Put(int id, Customer customer)
+        public void Put(int id)
         {
             CustomerUtil customerUtil = new CustomerUtil();
-            customerUtil.Update(customer);
+            customerUtil.Update(id);
             Console.WriteLine("MADE TO CONTROLLER");
         }
 
