@@ -11,18 +11,23 @@ function custLogin(){
         return response.json();
     }).then(function(json){
         console.log(json);
+        console.log("starting foreach");
         json.forEach((customer) => {
-            if(email === customer.custEmail && password === customer.custPassword)
+            // console.log(email);
+            // console.log(customer.custEmail);
+            // console.log(password);
+            // console.log(customer.custPassword);
+            if(email == customer.custEmail && password == customer.custPassword)
             {
                 sessionStorage.setItem("custEmail", customer.custEmail);
                 sessionStorage.setItem("custPassword", customer.custPassword);
-                console.log(email);
-                window.location.href = "./selection.html";
+                console.log("Login successful");
+                //window.location.href = "./selection.html";
             }
-            else
-            {
-                incorrectPassword();
-            }
+            // else
+            // {
+            //     incorrectPassword();
+            // }
 		});
     }).catch(function(error){
         console.log(error);

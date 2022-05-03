@@ -15,11 +15,12 @@ namespace Api.Database
             using var con = new MySqlConnection(cs);
             con.Open();  
 
-            string stm = @"INSERT INTO orders(orderId, orderRecordDate, orderCompleteDate, orderProduct, orderTotal) 
-                VALUES(@orderId, @orderRecordDate, @orderCompleteDate, @orderProduct, @orderTotal)";
+            string stm = @"INSERT INTO orders(orderId, custId, orderRecordDate, orderCompleteDate, orderProduct, orderTotal) 
+                VALUES(@orderId, @custId, @orderRecordDate, @orderCompleteDate, @orderProduct, @orderTotal)";
 
             using var cmd = new MySqlCommand(stm, con);
             cmd.Parameters.AddWithValue("@orderId", order.OrderId);
+            cmd.Parameters.AddWithValue("@custId", order.CustId);
             cmd.Parameters.AddWithValue("@orderRecordDate", order.OrderRecordDate);
             cmd.Parameters.AddWithValue("@orderCompleteDate", order.OrderCompleteDate);
             cmd.Parameters.AddWithValue("@orderProduct", order.OrderProduct);
@@ -44,10 +45,11 @@ namespace Api.Database
             {
                 myOrder.Add(new Order(){
                     OrderId = read.GetInt32(0),
-                    OrderRecordDate = read.GetDateTime(1),
-                    OrderCompleteDate = read.GetDateTime(2),
-                    OrderProduct = read.GetString(3),
-                    OrderTotal = read.GetDouble(4),
+                    CustId = read.GetInt32(1),
+                    OrderRecordDate = read.GetDateTime(2),
+                    OrderCompleteDate = read.GetDateTime(3),
+                    OrderProduct = read.GetString(4),
+                    OrderTotal = read.GetDouble(5),
                 });
             }
             return myOrder;
